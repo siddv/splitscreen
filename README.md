@@ -3,7 +3,10 @@
 > Simple chrome extension to display webpages next to each other, when opening a new tab.
 
 
-Based on the [webpack simple](https://github.com/vuejs-templates/webpack-simple) Vue template 
+Chrome Extension available here https://chrome.google.com/webstore/detail/splitscreen/lejikfhnnennacpmpfcphoodkfklkgnj
+
+
+Based on the [webpack simple](https://github.com/vuejs-templates/webpack-simple) Vue template.
 
 ## Build Setup
 
