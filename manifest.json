@@ -3,7 +3,6 @@
     "name": "splitscreen",
     "description": "Displays two webpages next to each other in a new tab",
     "version": "0.0.1",
-    "default_locale": "en",
     "author": "Siddharth Vadgama <me@siddv.net>",
     "homepage_url": "https://github.com/siddv/splitscreen",
     "icons": {
