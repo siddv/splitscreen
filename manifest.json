@@ -6,6 +6,12 @@
     "default_locale": "en",
     "author": "Siddharth Vadgama <me@siddv.net>",
     "homepage_url": "https://github.com/siddv/splitscreen",
+    "icons": {
+        "16": "./icons/splitscreen-16.png",
+        "32": "./icons/splitscreen-32.png",
+        "48": "./icons/splitscreen-48.png",
+        "128": "./icons/splitscreen-128.png"
+    },
     "permissions": [
         "management",
         "storage",
