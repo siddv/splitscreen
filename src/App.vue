@@ -128,8 +128,6 @@ export default {
         }
       }
 
-      this.addListeners();
-
       chrome.storage.sync.set({
         sites: {
           left: this.userInput.left,
@@ -139,6 +137,8 @@ export default {
   
         this.sites.left = this.userInput.left;
         this.sites.right = this.userInput.right;
+
+        this.addListeners();
   
       });
 
