@@ -41,12 +41,12 @@ export default {
     return {
       msg: 'Welcome to Your Vue.js App',
       userInput: {
-        left: 'sdfs',
-        right: 'sdfsd'
+        left: '',
+        right: ''
       },
       sites: {
-        left: 'sdfs',
-        right: 'sdfsd'
+        left: '',
+        right: ''
       }
     }
   },
@@ -54,13 +54,18 @@ export default {
     
     chrome.storage.sync.get('sites', (data) => {
 
-      this.sites.left = data.sites.left;
-      this.userInput.left = data.sites.left;
+      if(data.sites) {
 
-      this.sites.right = data.sites.right;
-      this.userInput.right = data.sites.right;
+        this.sites.left = data.sites.left;
+        this.userInput.left = data.sites.left;
+  
+        this.sites.right = data.sites.right;
+        this.userInput.right = data.sites.right;
 
-      this.addListeners();
+        this.addListeners();
+
+      }
+
     })
 
   },
