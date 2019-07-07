@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Splitscreen Options</title>
+  <!-- Switch courtesy of Oleg Frolov: https://dribbble.com/shots/6266357-Checkboxswitcher -->
+  <style>
+    :root {
+      --duration: .4s;
+    }
+
+    .checker {
+      display: block;
+      font-size: 20vmin;
+      height: 1em;
+      width: 2.5em;
+      box-sizing: content-box;
+      padding: 0.15em;
+      border-radius: 0.25em;
+      transition: -webkit-transform var(--duration) ease;
+      transition: transform var(--duration) ease;
+      transition: transform var(--duration) ease, -webkit-transform var(--duration) ease;
+      cursor: pointer;
+    }
+
+    .checkmark {
+      width: 1em;
+      height: 1em;
+      transition: -webkit-transform var(--duration) ease;
+      transition: transform var(--duration) ease;
+      transition: transform var(--duration) ease, -webkit-transform var(--duration) ease;
+      -webkit-transform: translateX(-0.4em);
+              transform: translateX(-0.4em);
+      z-index: 5;
+    }
+    .checkmark svg {
+      display: block;
+      background: #e5e5e5;
+      -webkit-transform: translateX(0.4em);
+              transform: translateX(0.4em);
+      border-radius: 0.15em;
+      transition: background-color var(--duration) ease, -webkit-transform calc(var(--duration) * 1.5) ease;
+      transition: background-color var(--duration) ease, transform calc(var(--duration) * 1.5) ease;
+      transition: background-color var(--duration) ease, transform calc(var(--duration) * 1.5) ease, -webkit-transform calc(var(--duration) * 1.5) ease;
+    }
+    .checkmark svg path {
+      stroke-dasharray: 90 90;
+      stroke-dashoffset: 90;
+      transition: stroke-dashoffset calc(var(--duration) / 3) linear calc(var(--duration) / 3);
+    }
+
+    .checkbox {
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0.4;
+      visibility: hidden;
+    }
+    .checkbox:checked ~ .checkmark {
+      -webkit-transform: translate(1.9em);
+              transform: translate(1.9em);
+    }
+    .checkbox:checked ~ .checkmark svg {
+      background: #77c44c;
+      -webkit-transform: translate(-0.4em);
+              transform: translate(-0.4em);
+    }
+    .checkbox:checked ~ .checkmark svg path {
+      stroke-dashoffset: 0;
+    }
+
+    .check-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: white;
+      z-index: 2;
+    }
+    .check-bg:before, .check-bg:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      border-radius: inherit;
+    }
+    .check-bg:after {
+      background: white;
+    }
+    .check-bg:before {
+      transition: -webkit-transform var(--duration) ease;
+      transition: transform var(--duration) ease;
+      transition: transform var(--duration) ease, -webkit-transform var(--duration) ease;
+      -webkit-transform: translateY(30%);
+              transform: translateY(30%);
+      -webkit-transform-origin: bottom center;
+              transform-origin: bottom center;
+      background: black;
+      -webkit-filter: blur(0.25em);
+              filter: blur(0.25em);
+      opacity: 0.2;
+      z-index: -1;
+    }
+
+    .checker.checker:active {
+      -webkit-transform: scale(0.85);
+              transform: scale(0.85);
+      transition-duration: calc(var(--duration) / 2);
+    }
+    .checker.checker:active .check-bg::before {
+      -webkit-transform: translateY(0) scale(0.8);
+              transform: translateY(0) scale(0.8);
+      opacity: 0.2;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    html {
+      height: 100%;
+    }
+
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      font-size: 40px;
+      color: #242424;
+      background-color: #f2f2f2;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <h1><label for="openinnewtab">Open in new tab?</label></h1>
+
+  <label class="checker">
+    <input class="checkbox" id="openinnewtab" name="openinnewtab" type="checkbox" />
+    <div class="check-bg"></div>
+    <div class="checkmark">
+      <svg viewBox="0 0 100 100">
+        <path d="M20,55 L40,75 L77,27" fill="none" stroke="#FFF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </div>
+  </label>
+  <script src="./options.js"></script>
+</body>
+</html>
